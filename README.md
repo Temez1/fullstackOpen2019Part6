@@ -1,3 +1,3 @@
-# Sovelluksen tilan hallinta Redux-kirjastolla
+# Anekdootit
 
 Flux arkkitehtuuri ja Redux. Reducer, Action creator.
