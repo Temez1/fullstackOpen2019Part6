@@ -1,12 +1,13 @@
 import React from "react"
 import {vote} from "../reducers/anecdoteReducer"
+import {addNotification} from "../components/Notification"
 
 const AnecdoteList = ({store}) => {
-
-  const anecdotes = store.getState()
+  const anecdotes = store.getState().anecdotes
   
   const addVote = (id) => {
     store.dispatch(vote(id))
+    addNotification(store, "vote added")
   }
 
   return(
