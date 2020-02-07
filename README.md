@@ -1,3 +1,3 @@
 # Anekdootit
 
-Flux arkkitehtuuri ja Redux. Reducer, Action creator.
+Flux arkkitehtuuri ja Redux. Reducer, Action creator, combined reducers.
