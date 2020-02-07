@@ -1,18 +1,18 @@
 import React from "react"
+import { connect } from 'react-redux'
 import {vote} from "../reducers/anecdoteReducer"
-import {addNotification} from "../components/Notification"
+import {newNotification} from "../reducers/notificationReducer"
 
-const AnecdoteList = ({store}) => {
-  const anecdotes = store.getState().anecdotes
+const AnecdoteList = (props) => {
   
   const addVote = (id) => {
-    store.dispatch(vote(id))
-    addNotification(store, "vote added")
+    props.vote(id)
+    props.newNotification("vote added")
   }
 
   return(
     <div>
-      {anecdotes.map(anecdote =>
+      {props.anecdotes.map(anecdote =>
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
@@ -27,4 +27,18 @@ const AnecdoteList = ({store}) => {
   )
 }
 
-export default AnecdoteList
+const mapStateToProps = (state) => (
+  {
+    anecdotes: state.anecdotes,
+  }
+)
+
+const mapDispatchToProps = {
+  vote,
+  newNotification,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AnecdoteList)

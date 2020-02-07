@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import AnecdoteForm from './components/AnecdoteForm'
 import AnecdoteList from './components/AnecdoteList'
 import Notification from "./components/Notification"
+import { initalizeAnecdotes } from './reducers/anecdoteReducer'
 
 const App = (props) => {
-  const store = props.store
+  useEffect(() => {
+    props.initalizeAnecdotes()
+  },[])
 
   return (
     <div>
-      <Notification store={store}/>
+      <Notification/>
       <h2>Anecdotes</h2>
-      <AnecdoteList store={store}/>
-      <AnecdoteForm store={store}/>
+      <AnecdoteList/>
+      <AnecdoteForm/>
     </div>
   )
 }
 
-export default App
+export default connect(null, { initalizeAnecdotes })(App)
